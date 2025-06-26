@@ -1,5 +1,5 @@
 +++
-image = "hawk-fort-mason.jpg"
+image = "cooper-hawk.jpg"
 date = "2025-06-01"
 title = "Cooper Hawk in SF"
 type = "gallery"
