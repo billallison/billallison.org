@@ -4,6 +4,8 @@ draft = false
 title = 'Contact'
 +++
 
+{{< figure src="/images/gh-billallison-headshot-e1548743013167.jpg" alt="Bill Allison headshot" class="headshot" >}}
+
 Here's how you can get in touch with me:
 
 **Email:** [ba@billallison.org](mailto:ba@billallison.org)

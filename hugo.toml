@@ -30,3 +30,10 @@ theme = 'console'
   [[params.navlinks]]
   name = "contact/"
   url = "/contact/"
+
+# Enable archive pages - this will build /posts/2018/, /posts/2018/10/ etc.
+[build]
+  writeStats = true
+
+# Configure Hugo to build archive pages
+disableKinds = []

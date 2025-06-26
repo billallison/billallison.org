@@ -1,0 +1,53 @@
+{
+  "htmlElements": {
+    "tags": [
+      "a",
+      "body",
+      "br",
+      "div",
+      "em",
+      "figure",
+      "h1",
+      "head",
+      "header",
+      "html",
+      "img",
+      "li",
+      "link",
+      "meta",
+      "nav",
+      "p",
+      "script",
+      "span",
+      "strong",
+      "style",
+      "title",
+      "ul"
+    ],
+    "classes": [
+      "animated",
+      "container",
+      "date",
+      "fadeIn",
+      "fast",
+      "footer",
+      "gallery-image",
+      "gallery-thumbnail",
+      "headshot",
+      "homepage-photo-grid",
+      "homepage-photo-thumbnail",
+      "image-grid",
+      "img-responsive",
+      "logo",
+      "no-style",
+      "post",
+      "posts-list",
+      "terminal",
+      "terminal-logo",
+      "terminal-menu",
+      "terminal-nav",
+      "terminal-prompt"
+    ],
+    "ids": null
+  }
+}

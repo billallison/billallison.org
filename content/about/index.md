@@ -4,7 +4,7 @@ draft = false
 title = 'About'
 +++
 
-{{< figure src="/images/gh-billallison-headshot-e1548743013167.jpg" alt="Bill Allison headshot" class="headshot" >}}
+{{< figure src="/images/leverage-sm-1.jpg" alt="Bill Allison" class="headshot" >}}
 
 Welcome to my personal website. 
 
