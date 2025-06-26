@@ -5,8 +5,8 @@ title = 'Security in the Cloud @ UC Berkeley (CSG)'
 tags = ["presentations"]
 +++
 
+Talk - [Security in the Cloud @ UC Berkeley](https://billallison.org/staticfiles/BillAllison-CSG-201601-CloudSecurity.pdf), from the Common Solutions Group, January 2016 at Rice University, Houston TX.
 
-Slides from [Security in the Cloud @ UC Berkeley](https://billallison.org/staticfiles/BillAllison-CSG-201601-CloudSecurity.pdf), 
-Common Solutions Group, January 2016, Rice University, Houston TX. 
+<!-- more -->
 [This was a second version with some expanded slides and more time for discussion due to 
 interest (and lack of enough time on the agenda at the prior meeting).]

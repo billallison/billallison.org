@@ -5,7 +5,6 @@ title = 'CTO Introduction to UC Berkeley’s Mobile Platform (Arts+Design Mobile
 tags = ["presentations"]
 +++
 
-Slides from the [CTO Introduction to Berkeley’s Mobile Platform](https://billallison.org/staticfiles/CTOTalk-MobileThinkTank2018.pdf), 
-at the Arts+Design 2018 Mobile Think Tank.
+The [CTO Introduction to Berkeley’s Mobile Platform](https://billallison.org/staticfiles/CTOTalk-MobileThinkTank2018.pdf), to open the Arts+Design 2018 Mobile Think Tank at UC Berkeley.
 
 

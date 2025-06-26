@@ -1,10 +1,8 @@
 +++
-date = '2014-01-14'
+date = '2015-01-14'
 draft = false
 title = 'Moving To Continuous (DevOps and the Berkeley Desktop) (CSG)'
 tags = ["presentations"]
 +++
 
-
-Slides from  [Moving To Continuous (DevOps and the Berkeley Desktop)](https://billallison.org/staticfiles/moving-to-continuous-bill-allison-csg-1501.pdf), 
-Common Solutions Group Meeting, UC Berkeley
+MY talk [Moving To Continuous (DevOps and the Berkeley Desktop)](https://billallison.org/staticfiles/moving-to-continuous-bill-allison-csg-1501.pdf),from the January 2014 meeting of the Common Solutions Group at UC Berkeley.
