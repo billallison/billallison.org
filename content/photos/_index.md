@@ -5,4 +5,4 @@ draft = false
 type = "gallery"
 +++
 
-Informal snapshots of daily life and things that caught my eye on the go.
+Things that caught my eye, on the go.

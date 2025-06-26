@@ -1,8 +1,8 @@
 +++
 image = "hawk-fort-mason.jpg"
 date = "2025-06-01"
-title = "Cooper Hawk at Fort Mason"
+title = "Cooper Hawk in SF"
 type = "gallery"
 +++
 
-A Cooper Hawk, captured in flight at Fort Mason in San Francisco.
+A Cooper Hawk

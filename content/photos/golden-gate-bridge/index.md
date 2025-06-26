@@ -5,4 +5,4 @@ title = "Golden Gate Bridge"
 type = "gallery"
 +++
 
-The iconic Golden Gate Bridge in San Francisco, captured during a walk in summer 2009.
+The Golden Gate Bridge, summer 2009.

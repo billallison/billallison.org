@@ -5,4 +5,4 @@ title = "Coyote on the Waterfront"
 type = "gallery"
 +++
 
-A coyote casually walking along the waterfront in the SF Marina.
+A coyote casually walking along the waterfront.
