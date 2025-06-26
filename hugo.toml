@@ -1,0 +1,32 @@
+baseURL = 'https://billallison.org/'
+languageCode = 'en-us'
+title = 'billallison.org'
+theme = 'console'
+
+# Permalink configuration for posts
+[permalinks]
+  posts = "/posts/:year/:month/:slug/"
+
+[params]
+  # Keep full site title on mobile instead of cutting it off
+  titleCutting = false
+  
+  # Animation style
+  animateStyle = "animated fadeIn fast"
+  
+  # Navigation menu
+  [[params.navlinks]]
+  name = "about/"
+  url = "/about/"
+
+  [[params.navlinks]]
+  name = "posts/"
+  url = "/posts/"
+
+  [[params.navlinks]]
+  name = "photos/"
+  url = "/photos/"
+
+  [[params.navlinks]]
+  name = "contact/"
+  url = "/contact/"

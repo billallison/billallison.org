@@ -1,0 +1,73 @@
+{{ define "main" }}
+<br />
+<p>
+Welcome to my personal website.</a>
+</p>
+
+<h1>Latest photos</h1>
+
+<div class="homepage-photo-grid">
+{{ with .Site.GetPage "/photos" }}
+    {{ range first 3 (sort .Data.Pages "Date" "desc")}}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">
+        {{ $image := .Page.Resources.GetMatch .Params.image }}
+        {{ with $image }}
+            {{ $thumb := .Resize "400x400" }}
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="homepage-photo-thumbnail">
+        {{end}}
+        </a>
+    {{ end }}
+{{ end }}
+</div>
+
+<h1>Latest posts</h1>
+
+<div class="posts-list">
+{{ with .Site.GetPage "/posts" }}
+    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+        <div class="post">
+            <p>
+                <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+                <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+                {{ .Summary }}
+            </p>
+        </div>    
+    {{ end }}
+{{ end }}
+</div>
+
+<style>
+.homepage-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.homepage-photo-thumbnail {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.homepage-photo-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.homepage-photo-grid a {
+    display: block;
+    text-decoration: none;
+    justify-self: center;
+}
+
+@media (max-width: 768px) {
+    .homepage-photo-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+</style>
+
+{{ end }}

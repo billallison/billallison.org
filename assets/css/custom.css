@@ -1,0 +1,119 @@
+/* Custom styles for billallison.org */
+
+/* Override desktop layout: increase spacing between date and content */
+.posts-list {
+    padding-left: 180px; /* Increased from 130px to add more space */
+}
+
+.posts-list .date {
+    width: 160px; /* Increased from 130px to match new padding */
+}
+
+/* Reduce vertical spacing between posts */
+.posts-list .post {
+    margin-bottom: 1rem;
+}
+
+/* Ensure site name displays fully on mobile */
+@media only screen and (max-width: 850px) {
+    .site-name {
+        width: auto !important;
+        overflow: visible !important;
+        display: inline-block !important;
+    }
+    
+    /* Mobile post layout fixes */
+    .posts-list {
+        padding-left: 0; /* Remove left padding on mobile */
+    }
+    
+    .posts-list .date {
+        display: block !important; /* Override the display: none */
+        position: static !important; /* Remove absolute positioning */
+        width: auto !important; /* Remove fixed width */
+        font-weight: normal; /* Remove bold weight */
+        margin-bottom: 0.25rem; /* Add spacing below date */
+        font-size: 0.9em; /* Slightly smaller on mobile */
+    }
+    
+    /* Ensure title appears after date on mobile */
+    .posts-list .post p {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .posts-list .post h1 {
+        order: 2; /* Title comes after date */
+        margin-top: 0.25rem;
+    }
+    
+    .posts-list .date {
+        order: 1; /* Date comes first */
+    }
+    
+    /* Summary comes last */
+    .posts-list .post p > *:not(.date):not(h1) {
+        order: 3;
+    }
+}
+
+/* Mobile overrides: show date below title instead of hiding it */
+@media only screen and (max-width: 850px) {
+    .posts-list {
+        padding-left: 0; /* Remove left padding on mobile */
+    }
+    
+    .posts-list .date {
+        display: block !important; /* Override the display: none */
+        position: static !important; /* Remove absolute positioning */
+        width: auto !important; /* Remove fixed width */
+        font-weight: normal; /* Remove bold weight */
+        margin-bottom: 0.25rem; /* Add spacing below date */
+        font-size: 0.9em; /* Slightly smaller on mobile */
+    }
+    
+    /* Ensure title appears after date on mobile */
+    .posts-list .post p {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .posts-list .post h1 {
+        order: 2; /* Title comes after date */
+        margin-top: 0.25rem;
+    }
+    
+    .posts-list .date {
+        order: 1; /* Date comes first */
+    }
+    
+    /* Summary comes last */
+    .posts-list .post p > *:not(.date):not(h1) {
+        order: 3;
+    }
+}
+
+/* Headshot styling for about page */
+.headshot {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.headshot img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Mobile adjustments for headshot */
+@media only screen and (max-width: 850px) {
+    .headshot {
+        float: none;
+        display: block;
+        margin: 0 auto 1.5rem auto;
+        max-width: 150px;
+    }
+}

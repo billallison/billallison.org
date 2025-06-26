@@ -1,0 +1,59 @@
+{{ define "main" }}
+<h1>{{ .Page.Title }}</h1>
+{{ .Content }}
+
+<div class="image-grid">
+    {{ range sort .Data.Pages "Date" "desc" }}
+        {{ if and (isset .Params "image") .Params.image }}
+            <a href="{{ .Permalink }}" title="{{ .Title }}">
+            {{ $image := .Page.Resources.GetMatch .Params.image }}
+            {{ with $image }}
+                {{ $thumb := .Resize "400x400" }}
+                <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="gallery-thumbnail">
+            {{ else }}
+                <p>No image resource found for: {{ $.Params.image }}</p>
+            {{ end }}
+            </a>
+        {{ end }}
+    {{ end }}
+</div>
+
+<style>
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    max-width: 400px;
+    height: auto; /* Preserve aspect ratio */
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.image-grid a {
+    display: block;
+    text-decoration: none;
+    justify-self: center;
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-thumbnail {
+        max-width: 100%;
+    }
+}
+</style>
+
+{{ end }}
