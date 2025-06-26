@@ -2,6 +2,9 @@
 public/
 .hugo_build.lock
 
+# Hugo generated resources (images, CSS, etc.)
+resources/_gen/
+
 # Local development
 .DS_Store
 Thumbs.db
