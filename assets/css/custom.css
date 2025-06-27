@@ -36,60 +36,20 @@
         font-size: 0.9em; /* Slightly smaller on mobile */
     }
     
-    /* Ensure title appears after date on mobile */
-    .posts-list .post p {
-        display: flex;
-        flex-direction: column;
+    /* Ensure proper post structure on mobile */
+    .posts-list .post {
+        margin-bottom: 1.5rem;
     }
     
     .posts-list .post h1 {
-        order: 2; /* Title comes after date */
         margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
     }
     
-    .posts-list .date {
-        order: 1; /* Date comes first */
-    }
-    
-    /* Summary comes last */
-    .posts-list .post p > *:not(.date):not(h1) {
-        order: 3;
-    }
-}
-
-/* Mobile overrides: show date below title instead of hiding it */
-@media only screen and (max-width: 850px) {
-    .posts-list {
-        padding-left: 0; /* Remove left padding on mobile */
-    }
-    
-    .posts-list .date {
-        display: block !important; /* Override the display: none */
-        position: static !important; /* Remove absolute positioning */
-        width: auto !important; /* Remove fixed width */
-        font-weight: normal; /* Remove bold weight */
-        margin-bottom: 0.25rem; /* Add spacing below date */
-        font-size: 0.9em; /* Slightly smaller on mobile */
-    }
-    
-    /* Ensure title appears after date on mobile */
-    .posts-list .post p {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .posts-list .post h1 {
-        order: 2; /* Title comes after date */
-        margin-top: 0.25rem;
-    }
-    
-    .posts-list .date {
-        order: 1; /* Date comes first */
-    }
-    
-    /* Summary comes last */
-    .posts-list .post p > *:not(.date):not(h1) {
-        order: 3;
+    .posts-list .post h1 a {
+        word-wrap: break-word;
+        hyphens: auto;
     }
 }
 
