@@ -51,6 +51,24 @@
         word-wrap: break-word;
         hyphens: auto;
     }
+    
+    /* Ensure proper stacking order for mobile posts */
+    .posts-list .post .date {
+        order: 1;
+    }
+    
+    .posts-list .post h1 {
+        order: 2;
+        clear: both;
+        display: block;
+        width: 100%;
+    }
+    
+    .posts-list .post p {
+        order: 3;
+        clear: both;
+        margin-top: 0.5rem;
+    }
 }
 
 /* Headshot styling for about page */
