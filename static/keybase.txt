@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/billallison
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://billallison.org
+  * I am billallison (https://keybase.io/billallison) on keybase.
+  * I have a public key ASCpxQcO93ylX6pkw3CIr5irupHZ3yqy_r2-b0hby5e3Ugo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120a9c5070ef77ca55faa64c37088af98abba91d9df2ab2febdbe6f485bcb97b7520a",
+      "host": "keybase.io",
+      "kid": "0120a9c5070ef77ca55faa64c37088af98abba91d9df2ab2febdbe6f485bcb97b7520a",
+      "uid": "8cb843c333605cdc5b7628b1f89c6219",
+      "username": "billallison"
+    },
+    "merkle_root": {
+      "ctime": 1591483458,
+      "hash": "6e8e891f2109e031bbcf22974d501f1e7b0bf413231e862834846af15a29aa0ddca69236992d3d9ff10bdeb0e1e865688a124612d218ba208054d477a7350453",
+      "hash_meta": "3362a046bc6e5cc71a3eedb55fc6c3db4f5ca17e475e6b79027d43344770c7f7",
+      "seqno": 16564416
+    },
+    "service": {
+      "entropy": "RlkHcANxZ752HxKI1Go+6I2/",
+      "hostname": "billallison.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.5.0"
+  },
+  "ctime": 1591483500,
+  "expire_in": 504576000,
+  "prev": "bef4b2c2116b2aa0b1f19522a13edd02c6b6166b0014001f3f46e4e56006d048",
+  "seqno": 18,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgqcUHDvd8pV+qZMNwiK+Yq7qR2d8qsv69vm9IW8uXt1IKp3BheWxvYWTESpcCEsQgvvSywhFrKqCx8ZUioT7dAsa2FmsAFAAfP0bk5WAG0EjEIMKtQD1SxVwy4zImOhMYBzlJc4tcycqKjnm5ISEkpab+AgHCo3NpZ8RA6+SYpsY5Lb98bNbA7T4O+ZzwRKEVcvM8McygAcYnR0F0LUvhe1ECBWgvjRbkDwq0txY0gs1/RpQlUP3An1MYBahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDoFk3wzuKLiW3HC4BOgcLTlz74cYPjnADY4x9A7QzJOo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/billallison
+
+==================================================================
