@@ -1,7 +1,7 @@
 +++
 date = '2025-06-28T10:50:00-07:00'
 draft = false
-title = 'AI Slop - two videos on the perils of generative AI'
+title = 'Two videos on the perils of generative AI'
 tags = ["AI"]
 +++
 
