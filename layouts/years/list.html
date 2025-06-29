@@ -1,0 +1,26 @@
+{{ define "main" }}
+<!-- Add alias for /posts/YEAR/ to redirect to /years/YEAR/ -->
+{{ if ne .Title "Years" }}
+  {{ .Scratch.Set "yearAlias" (printf "/posts/%s/" .Title) }}
+{{ end }}
+
+<h1>Posts from {{ .Title }}</h1>
+
+<div class="posts-list">
+{{ $posts := .Pages.ByDate.Reverse }}
+{{ range $posts }}
+  <div class="post">
+    <p>
+      <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+      <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+      {{ .Summary }}
+    </p>
+  </div>
+{{ end }}
+
+{{ if eq (len $posts) 0 }}
+  <p>No posts found for this year.</p>
+{{ end }}
+</div>
+
+{{ end }}

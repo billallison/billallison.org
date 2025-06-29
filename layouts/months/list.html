@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
+{{ $monthNum := 0 }}
+{{ $monthName := "" }}
+
+{{ if ne .Title "Months" }}
+  {{ if eq .Title "01" }}{{ $monthNum = 1 }}{{ end }}
+  {{ if eq .Title "02" }}{{ $monthNum = 2 }}{{ end }}
+  {{ if eq .Title "03" }}{{ $monthNum = 3 }}{{ end }}
+  {{ if eq .Title "04" }}{{ $monthNum = 4 }}{{ end }}
+  {{ if eq .Title "05" }}{{ $monthNum = 5 }}{{ end }}
+  {{ if eq .Title "06" }}{{ $monthNum = 6 }}{{ end }}
+  {{ if eq .Title "07" }}{{ $monthNum = 7 }}{{ end }}
+  {{ if eq .Title "08" }}{{ $monthNum = 8 }}{{ end }}
+  {{ if eq .Title "09" }}{{ $monthNum = 9 }}{{ end }}
+  {{ if eq .Title "10" }}{{ $monthNum = 10 }}{{ end }}
+  {{ if eq .Title "11" }}{{ $monthNum = 11 }}{{ end }}
+  {{ if eq .Title "12" }}{{ $monthNum = 12 }}{{ end }}
+  {{ $monthName = index $monthNames (sub $monthNum 1) }}
+  
+  <h1>Posts from {{ $monthName }} {{ now.Year }}</h1>
+{{ else }}
+  <h1>Posts by Month</h1>
+{{ end }}
+
+<div class="posts-list">
+{{ $posts := .Pages.ByDate.Reverse }}
+{{ range $posts }}
+  <div class="post">
+    <p>
+      <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+      <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+      {{ .Summary }}
+    </p>
+  </div>
+{{ end }}
+
+{{ if eq (len $posts) 0 }}
+  <p>No posts found for this time period.</p>
+{{ end }}
+</div>
+
+{{ end }}

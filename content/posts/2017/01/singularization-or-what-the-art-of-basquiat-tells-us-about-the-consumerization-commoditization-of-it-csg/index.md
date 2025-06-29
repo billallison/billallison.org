@@ -5,3 +5,4 @@ title = 'Singularization, or What The Art of Basquiat Tells Us about the Consume
 tags = ["presentations"]
 +++
 
+Talk on *Singularization, or What The Art of Basquiat Tells Us about the Consumerization & Commoditization of IT*, Common Solutions Group Meeting, Tempe AZ
