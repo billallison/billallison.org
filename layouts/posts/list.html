@@ -17,7 +17,7 @@
 
 {{ if $month }}
   {{ $yearInt := int $year }}
-  {{ $monthInt := int (strings.TrimLeft "0" $month) }}
+  {{ $monthInt := int $month }}
   {{ $posts = where $posts ".Date.Year" $yearInt }}
   {{ $posts = where $posts ".Date.Month" $monthInt }}
 {{ else if and $year (ne $year "posts") }}

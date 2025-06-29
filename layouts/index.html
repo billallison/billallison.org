@@ -20,14 +20,15 @@
 <h1>Latest posts</h1>
 
 <div class="posts-list">
-{{ with .Site.GetPage "/posts" }}
-    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
-        <div class="post">
-            <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
-            <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
-            {{ .Summary }}
-        </div>    
-    {{ end }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $posts = where $posts ".Params.private" "!=" true }}
+{{ $posts = $posts.ByDate.Reverse }}
+{{ range first 3 $posts }}
+    <div class="post">
+        <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+        <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+        {{ .Summary }}
+    </div>    
 {{ end }}
 </div>
 

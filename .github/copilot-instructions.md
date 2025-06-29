@@ -6,3 +6,4 @@
 3. Never modify the submodules, always use overrides
 4. All changes should be minimal: target only what's you're being asked to do
 5. The website must be conformant to accessibility, adhering to WCAG 2.1 AA
+6. Remember to recurse all the submodules so we have them locally.
