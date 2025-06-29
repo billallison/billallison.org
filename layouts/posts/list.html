@@ -17,19 +17,8 @@
 
 {{ if $month }}
   {{ $yearInt := int $year }}
-  {{ $monthInt := 0 }}
-  {{ if eq $month "01" }}{{ $monthInt = 1 }}{{ end }}
-  {{ if eq $month "02" }}{{ $monthInt = 2 }}{{ end }}
-  {{ if eq $month "03" }}{{ $monthInt = 3 }}{{ end }}
-  {{ if eq $month "04" }}{{ $monthInt = 4 }}{{ end }}
-  {{ if eq $month "05" }}{{ $monthInt = 5 }}{{ end }}
-  {{ if eq $month "06" }}{{ $monthInt = 6 }}{{ end }}
-  {{ if eq $month "07" }}{{ $monthInt = 7 }}{{ end }}
-  {{ if eq $month "08" }}{{ $monthInt = 8 }}{{ end }}
-  {{ if eq $month "09" }}{{ $monthInt = 9 }}{{ end }}
-  {{ if eq $month "10" }}{{ $monthInt = 10 }}{{ end }}
-  {{ if eq $month "11" }}{{ $monthInt = 11 }}{{ end }}
-  {{ if eq $month "12" }}{{ $monthInt = 12 }}{{ end }}
+  {{ $monthInt := int (strings.TrimLeft $month "0") }}
+  {{ if eq $monthInt 0 }}{{ $monthInt = 12 }}{{ end }}
   {{ $posts = where $posts ".Date.Year" $yearInt }}
   {{ $posts = where $posts ".Date.Month" $monthInt }}
 {{ else if and $year (ne $year "posts") }}
