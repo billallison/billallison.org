@@ -8,6 +8,7 @@
       "em",
       "figure",
       "h1",
+      "h2",
       "head",
       "header",
       "html",
@@ -27,6 +28,7 @@
     ],
     "classes": [
       "animated",
+      "archive-navigation",
       "container",
       "date",
       "fadeIn",

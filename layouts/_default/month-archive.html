@@ -1,0 +1,58 @@
+{{ define "main" }}
+{{ $urlParts := split .RelPermalink "/" }}
+{{ $year := index $urlParts 2 }}
+{{ $month := index $urlParts 3 }}
+
+{{ $monthNum := 0 }}
+{{ $monthName := "" }}
+
+{{ if eq $month "01" }}{{ $monthNum = 1 }}{{ end }}
+{{ if eq $month "02" }}{{ $monthNum = 2 }}{{ end }}
+{{ if eq $month "03" }}{{ $monthNum = 3 }}{{ end }}
+{{ if eq $month "04" }}{{ $monthNum = 4 }}{{ end }}
+{{ if eq $month "05" }}{{ $monthNum = 5 }}{{ end }}
+{{ if eq $month "06" }}{{ $monthNum = 6 }}{{ end }}
+{{ if eq $month "07" }}{{ $monthNum = 7 }}{{ end }}
+{{ if eq $month "08" }}{{ $monthNum = 8 }}{{ end }}
+{{ if eq $month "09" }}{{ $monthNum = 9 }}{{ end }}
+{{ if eq $month "10" }}{{ $monthNum = 10 }}{{ end }}
+{{ if eq $month "11" }}{{ $monthNum = 11 }}{{ end }}
+{{ if eq $month "12" }}{{ $monthNum = 12 }}{{ end }}
+
+{{ if gt $monthNum 0 }}
+  {{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
+  {{ $monthName = index $monthNames (sub $monthNum 1) }}
+{{ end }}
+
+<h1>Posts from {{ $monthName }} {{ $year }}</h1>
+
+<!-- Navigation for month view -->
+<div class="archive-navigation" style="margin-bottom: 2rem;">
+  <p><a href="/posts/{{ $year }}/">← Back to {{ $year }}</a> | <a href="/posts/">← All posts</a></p>
+</div>
+
+<div class="posts-list">
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $posts = $posts.ByDate.Reverse }}
+{{ $yearInt := int $year }}
+{{ $posts = where $posts ".Date.Year" $yearInt }}
+{{ $posts = where $posts ".Date.Month" $monthNum }}
+
+{{ range $posts }}
+  {{ if not .Params.private }}
+    <div class="post">
+      <p>
+        <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+        <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+        {{ .Summary }}
+      </p>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ if eq (len $posts) 0 }}
+  <p>No posts found for this time period.</p>
+{{ end }}
+</div>
+
+{{ end }}

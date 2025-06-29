@@ -33,10 +33,17 @@
         <div class="terminal-nav">
           <header class="terminal-logo">
             <div class="logo terminal-prompt">
-              {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
-              {{ $.Scratch.Add "path" .Site.BaseURL }}
+              {{ $url := .RelPermalink }}
+              {{ if hasPrefix $url "/" }}{{ $url = strings.TrimPrefix "/" $url }}{{ end }}
+              {{ if hasSuffix $url "/" }}{{ $url = strings.TrimSuffix "/" $url }}{{ end }}
               <a href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a>:~# 
-              {{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a>/{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></header>
+              {{ $pathSoFar := "" }}
+              {{ range $index, $element := split $url "/" }}
+                {{ if ne $element "" }}
+                  {{ $pathSoFar = printf "%s/%s" $pathSoFar $element }}
+                  <a href='{{ $pathSoFar | absURL }}'>{{ $element }}</a>/
+                {{ end }}
+              {{ end }}</div></header>
           <nav class="terminal-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 {{ range $index, $element := .Site.Params.navlinks }}
