@@ -1,5 +1,6 @@
 {{/* Giscus comments powered by GitHub Discussions */}}
-{{ if .Site.Params.giscus.enable }}
+{{/* Check if comments are enabled globally AND not disabled for this specific post */}}
+{{ if and .Site.Params.giscus.enable (ne .Params.comments false) }}
 <div id="comments" class="comments-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333;">
   <h3>Comments</h3>
   <script src="https://giscus.app/client.js"
