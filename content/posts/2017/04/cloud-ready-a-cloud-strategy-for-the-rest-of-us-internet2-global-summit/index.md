@@ -3,7 +3,7 @@ date = '2017-04-26'
 draft = false
 title = 'Cloud Ready: A Cloud Strategy for the Rest Of Us (Internet2 Global Summit)'
 tags = ["presentations"]
-comments: false  # Disable comments for this post
+comments = false  # Disable comments for this post
 +++
 
 
