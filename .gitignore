@@ -1,6 +1,7 @@
 # Hugo build artifacts
 public/
 .hugo_build.lock
+hugo_stats.json
 
 # Hugo generated resources (images, CSS, etc.)
 resources/_gen/
