@@ -10,5 +10,6 @@
 {{ end }}
 <br/><br/>
 {{ .Content }}
-{{ template "_internal/disqus.html" . }}
+
+{{ partial "giscus.html" . }}
 {{ end }}
