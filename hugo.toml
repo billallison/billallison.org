@@ -7,6 +7,10 @@ theme = 'console'
 [permalinks]
   posts = "/posts/:year/:month/:slug/"
 
+# Taxonomy configuration
+[taxonomies]
+  tag = "tags"
+
 [params]
   # Keep full site title on mobile instead of cutting it off
   titleCutting = false

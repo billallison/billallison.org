@@ -1,0 +1,135 @@
+name: Generate Archive Pages
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'content/posts/**'
+  workflow_dispatch:
+
+jobs:
+  generate-archives:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+        fetch-depth: 0
+        
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: 'latest'
+        extended: true
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Generate archive pages
+      run: python3 scripts/generate-archive-pages.py
+    
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit archive pages
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add content/posts/**/_index.md
+        git commit -m "Auto-generate archive pages for new posts"
+        git push
+      with:
+        hugo-version: 'latest'
+        extended: true
+        
+    - name: Generate Archive Index Files
+      run: |
+        #!/bin/bash
+        
+        # Create archives directory if it doesn't exist
+        mkdir -p content/posts
+        
+        # Find all year/month combinations from posts
+        years_months=$(find content/posts -name "*.md" -not -name "_index.md" | \
+                      grep -E '/[0-9]{4}/[0-9]{2}/' | \
+                      sed -E 's|.*posts/([0-9]{4})/([0-9]{2})/.*|\1/\2|' | \
+                      sort -u)
+        
+        # Generate year archive pages
+        years=$(echo "$years_months" | cut -d'/' -f1 | sort -u)
+        for year in $years; do
+          year_dir="content/posts/$year"
+          year_index="$year_dir/_index.md"
+          
+          if [ ! -f "$year_index" ]; then
+            mkdir -p "$year_dir"
+            cat > "$year_index" << EOF
+        ---
+        title: "Posts from $year"
+        date: $year-01-01
+        type: "posts-archive"
+        layout: "year-archive"
+        ---
+        EOF
+            echo "Created $year_index"
+          fi
+        done
+        
+        # Generate month archive pages  
+        for year_month in $years_months; do
+          year=$(echo $year_month | cut -d'/' -f1)
+          month=$(echo $year_month | cut -d'/' -f2)
+          
+          month_dir="content/posts/$year/$month"
+          month_index="$month_dir/_index.md"
+          
+          if [ ! -f "$month_index" ]; then
+            # Convert month number to name
+            case $month in
+              01) month_name="January" ;;
+              02) month_name="February" ;;
+              03) month_name="March" ;;
+              04) month_name="April" ;;
+              05) month_name="May" ;;
+              06) month_name="June" ;;
+              07) month_name="July" ;;
+              08) month_name="August" ;;
+              09) month_name="September" ;;
+              10) month_name="October" ;;
+              11) month_name="November" ;;
+              12) month_name="December" ;;
+            esac
+            
+            mkdir -p "$month_dir"
+            cat > "$month_index" << EOF
+        ---
+        title: "Posts from $month_name $year"
+        date: $year-$month-01
+        type: "posts-archive"
+        layout: "month-archive"
+        ---
+        EOF
+            echo "Created $month_index"
+          fi
+        done
+        
+    - name: Commit and push if changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add content/posts/**/_index.md
+        if ! git diff --staged --quiet; then
+          git commit -m "Auto-generate archive index files"
+          git push
+        else
+          echo "No archive files to add"
+        fi

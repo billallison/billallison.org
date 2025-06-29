@@ -7,4 +7,3 @@ tags = ["presentations"]
 
 
 [Cloud Ready: A Cloud Strategy for the Rest Of Us](https://meetings.internet2.edu/2017-global-summit/detail/10004661/), Internet2 Global Summit 2017 (session facilitator with Bob Flynn who designed the 
-“Conundra” game, and Oren Sreebny)

@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{ $urlParts := split .RelPermalink "/" }}
+{{ $year := index $urlParts 2 }}
+
+<h1>Posts from {{ $year }}</h1>
+
+<!-- Month navigation for this year -->
+<div class="archive-navigation" style="margin-bottom: 2rem;">
+  <h2>Browse {{ $year }} by Month</h2>
+  <div style="margin-bottom: 1rem;">
+    {{ $months := slice }}
+    {{ $yearInt := int $year }}
+    {{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
+    {{ range .Site.RegularPages }}
+      {{ if and (eq .Section "posts") (eq .Date.Year $yearInt) }}
+        {{ $months = $months | append .Date.Month }}
+      {{ end }}
+    {{ end }}
+    {{ $months = $months | uniq }}
+    {{ $months = sort $months }}
+    {{ range $months }}
+      {{ $monthStr := printf "%02d" . }}
+      {{ $monthName := index $monthNames (sub . 1) }}
+      <a href="/posts/{{ $year }}/{{ $monthStr }}/" style="margin-right: 1rem;">{{ $monthName }}</a>
+    {{ end }}
+  </div>
+  <p><a href="/posts/">← Back to all posts</a></p>
+</div>
+
+<div class="posts-list">
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $posts = $posts.ByDate.Reverse }}
+{{ $yearInt := int $year }}
+{{ $posts = where $posts ".Date.Year" $yearInt }}
+
+{{ range $posts }}
+  {{ if not .Params.private }}
+    <div class="post">
+      <p>
+        <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+        <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+        {{ .Summary }}
+      </p>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ if eq (len $posts) 0 }}
+  <p>No posts found for this time period.</p>
+{{ end }}
+</div>
+
+{{ end }}

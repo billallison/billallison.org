@@ -3,12 +3,80 @@
 {{ $year := index $urlParts 2 }}
 {{ $month := index $urlParts 3 }}
 
+{{ $monthNum := 0 }}
+{{ $monthName := "" }}
+
 {{ if $month }}
-  <h1>Posts from {{ $month }}/{{ $year }}</h1>
+  {{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
+  
+  {{ if eq $month "01" }}{{ $monthNum = 1 }}{{ end }}
+  {{ if eq $month "02" }}{{ $monthNum = 2 }}{{ end }}
+  {{ if eq $month "03" }}{{ $monthNum = 3 }}{{ end }}
+  {{ if eq $month "04" }}{{ $monthNum = 4 }}{{ end }}
+  {{ if eq $month "05" }}{{ $monthNum = 5 }}{{ end }}
+  {{ if eq $month "06" }}{{ $monthNum = 6 }}{{ end }}
+  {{ if eq $month "07" }}{{ $monthNum = 7 }}{{ end }}
+  {{ if eq $month "08" }}{{ $monthNum = 8 }}{{ end }}
+  {{ if eq $month "09" }}{{ $monthNum = 9 }}{{ end }}
+  {{ if eq $month "10" }}{{ $monthNum = 10 }}{{ end }}
+  {{ if eq $month "11" }}{{ $monthNum = 11 }}{{ end }}
+  {{ if eq $month "12" }}{{ $monthNum = 12 }}{{ end }}
+  {{ if gt $monthNum 0 }}
+    {{ $monthName = index $monthNames (sub $monthNum 1) }}
+  {{ end }}
+  
+  <h1>Posts from {{ $monthName }} {{ $year }}</h1>
+  
+  <!-- Navigation for month view -->
+  <div class="archive-navigation" style="margin-bottom: 2rem;">
+    <p><a href="/posts/{{ $year }}/">← Back to {{ $year }}</a> | <a href="/posts/">← All posts</a></p>
+  </div>
 {{ else if and $year (ne $year "posts") }}
   <h1>Posts from {{ $year }}</h1>
+  
+  <!-- Month navigation for this year -->
+  <div class="archive-navigation" style="margin-bottom: 2rem;">
+    <h2>Browse {{ $year }} by Month</h2>
+    <div style="margin-bottom: 1rem;">
+      {{ $months := slice }}
+      {{ $yearInt := int $year }}
+      {{ $monthNames := slice "January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December" }}
+      {{ range .Site.RegularPages }}
+        {{ if and (eq .Section "posts") (eq .Date.Year $yearInt) }}
+          {{ $months = $months | append .Date.Month }}
+        {{ end }}
+      {{ end }}
+      {{ $months = $months | uniq }}
+      {{ $months = sort $months }}
+      {{ range $months }}
+        {{ $monthStr := printf "%02d" . }}
+        {{ $monthName := index $monthNames (sub . 1) }}
+        <a href="/posts/{{ $year }}/{{ $monthStr }}/" style="margin-right: 1rem;">{{ $monthName }}</a>
+      {{ end }}
+    </div>
+    <p><a href="/posts/">← Back to all posts</a></p>
+  </div>
 {{ else }}
   <h1>Posts</h1>
+  
+  <!-- Archive navigation -->
+  <div class="archive-navigation" style="margin-bottom: 2rem;">
+    <h2>Browse by Year</h2>
+    <div style="margin-bottom: 1rem;">
+      {{ $years := slice }}
+      {{ range .Site.RegularPages }}
+        {{ if eq .Section "posts" }}
+          {{ $years = $years | append .Date.Year }}
+        {{ end }}
+      {{ end }}
+      {{ $years = $years | uniq }}
+      {{ $years = sort $years }}
+      {{ $years = sort $years "value" "desc" }}
+      {{ range $years }}
+        <a href="/posts/{{ . }}/" style="margin-right: 1rem;">{{ . }}</a>
+      {{ end }}
+    </div>
+  </div>
 {{ end }}
 
 <div class="posts-list">
@@ -17,10 +85,8 @@
 
 {{ if $month }}
   {{ $yearInt := int $year }}
-  {{ $monthInt := int (strings.TrimLeft $month "0") }}
-  {{ if eq $monthInt 0 }}{{ $monthInt = 12 }}{{ end }}
   {{ $posts = where $posts ".Date.Year" $yearInt }}
-  {{ $posts = where $posts ".Date.Month" $monthInt }}
+  {{ $posts = where $posts ".Date.Month" $monthNum }}
 {{ else if and $year (ne $year "posts") }}
   {{ $yearInt := int $year }}
   {{ $posts = where $posts ".Date.Year" $yearInt }}
