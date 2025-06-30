@@ -11,7 +11,7 @@ In last week's Lunch with the FT, [George Hammond discussed the hype of generati
 
 So -- where will they land at the end of lunch? Does the rise of AI technology portend a dangerous dystopia, or will it  shape a new utopian world?
 
-<!-- more -->
+<!--more-->
 
 Emily characterizes AI chatbots as biased "plagiarism machines", dismissing Sam Altman's promises that AI will bring "scientific breakthroughs, material abundance and a new chapter in human civilisation...and will soon 'discover new knowledge'".
 
